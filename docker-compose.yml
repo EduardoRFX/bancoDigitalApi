@@ -1,0 +1,19 @@
+version: '2.12.2'
+
+services: 
+  index:
+    build: .
+    command: npm start
+    ports:
+      - '3000:4000'
+    volumes:
+      - ./:/usr/index
+      - /usr/node_modules
+
+  db:
+    image: postgres:14.2-alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: example
+    ports: 
+    - '5432:5432'
